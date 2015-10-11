@@ -1,0 +1,34 @@
+{
+    "name": "gobem-proc-prettydiff",
+    "version": "0.0.1",
+    "description": "Processor to minify files for gobem builder.",
+    "main": "index.js",
+    "dependencies": {
+        "prettydiff": "*",
+        "redis": "*"
+    },
+    "peerDependencies": {
+        "gobem": "*"
+    },
+    "keywords": [
+        "gobem",
+        "processor",
+        "minifier",
+        "prettydiff",
+        "javascript",
+        "js"
+    ],
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": {
+        "name": "Stepan Zhevak",
+        "email": "enet@protonmail.ch",
+        "url": "zhevak.name"
+    },
+    "repository": "https://github.com/Enet/gobem-proc-prettydiff",
+    "license": "GPLv3",
+    "engines": {
+        "node": ">=4.0.0"
+    }
+}
