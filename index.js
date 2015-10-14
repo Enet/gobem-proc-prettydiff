@@ -5,18 +5,19 @@ var prettydiff = require('prettydiff'),
     re = /^\s*\/?\/?(\*|'|"|)\s*prevent\sprettydiff\s*\1\/?;?\s*$/m;
 
 module.exports = function () {
-    let client;
+    let client,
+        key = 'gobem-proc-prettydiff';
 
     return {
         before: function (next) {
             client = redis.createClient();
-            client.expire('prettydiff', 86400);
+            client.expire(key, 86400);
             next();
         },
 
         process: function (next, input, output, args, content, path) {
             if (!content) return next();
-            client.hget('prettydiff', content, function (error, reply) {
+            client.hget(key, content, function (error, reply) {
                 if (reply === null) {
                     try {
                         output.set(path, re.test(content) ? content : prettydiff.api({
@@ -25,10 +26,10 @@ module.exports = function () {
                             report: false,
                             source: content
                         })[0]);
-                        client.hset('prettydiff', content, output.get(path), next);
+                        client.hset(key, content, output.get(path), next);
                     } catch (error) {
                         output.set(path, content);
-                        next(error);
+                        next(~args.indexOf('ignore-errors') ? null : error);
                     }
                 } else {
                     output.set(path, reply);
