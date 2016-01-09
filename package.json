@@ -1,6 +1,6 @@
 {
     "name": "gobem-proc-prettydiff",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "description": "Processor to minify files for gobem builder.",
     "main": "index.js",
     "dependencies": {
