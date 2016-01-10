@@ -1,11 +1,11 @@
 {
     "name": "gobem-proc-prettydiff",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "description": "Processor to minify files for gobem builder.",
     "main": "index.js",
     "dependencies": {
         "prettydiff": "*",
-        "redis": "*"
+        "xxhash": "*"
     },
     "peerDependencies": {
         "gobem": "*"
@@ -27,7 +27,7 @@
         "url": "zhevak.name"
     },
     "repository": "https://github.com/Enet/gobem-proc-prettydiff",
-    "license": "GPLv3",
+    "license": "GPL-3.0",
     "engines": {
         "node": ">=4.0.0"
     }
