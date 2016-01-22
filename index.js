@@ -3,7 +3,7 @@
 var path = require('path'),
     fs = require('fs'),
     prettydiff = require('prettydiff'),
-    xxhash = require('xxhash'),
+    xxhash = global[Symbol.for('xxhash')] = global[Symbol.for('xxhash')] || require('xxhash'),
     re = /^\s*\/?\/?(\*|'|"|)\s*prevent\sprettydiff\s*\1\/?;?\s*$/m;
 
 module.exports = function (options) {
