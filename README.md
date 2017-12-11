@@ -1,4 +1,7 @@
 # gobem-proc-prettydiff
+**DON'T USE THE PACKAGE. IT'S DEPRECATED!!!
+USE [webpack](https://github.com/webpack) INSTEAD.**
+
 This processor for [gobem](https://github.com/Enet/gobem) minifies files using **prettydiff**. All options are passed as a single object. Empty files are just skipped during processing. **gobem-proc-prettydiff** requires directory to cache results of the work.
 
 The following options are supported:
