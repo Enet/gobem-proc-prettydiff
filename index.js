@@ -3,7 +3,7 @@
 var path = require('path'),
     fs = require('fs'),
     prettydiff = require('prettydiff'),
-    xxhash = global[Symbol.for('xxhash')] = global[Symbol.for('xxhash')] || require('xxhash'),
+    crypto = require('crypto'),
     re = /^\s*\/?\/?(\*|'|"|)\s*prevent\sprettydiff\s*\1\/?;?\s*$/m;
 
 module.exports = function (options) {
@@ -13,7 +13,7 @@ module.exports = function (options) {
         process: function (next, input, output, config, rawContent, rawPath) {
             if (!rawContent) return next();
 
-            let key = xxhash.hash(new Buffer(rawContent), 0xCAFEBABE) + '',
+            let key = crypto.createHash('md5').update(rawContent).digest('hex'),
                 filePath = path.join(options.cacheDir + '', 'gobem-proc-prettydiff^' + key);
 
             fs.readFile(filePath, 'utf8', (error, fileContent) => {
